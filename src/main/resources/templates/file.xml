@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:doOutwardSWIFTMXMapping xmlns:tns="http://www.temenos.com/T24/event/CustomerStatusRptIF/CustomerStatusRptFlowMX" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.temenos.com/T24/event/CustomerStatusRptIF/CustomerStatusRptFlowMX OutwardSWIFTMXMapping-doOutwardSWIFTMXMapping.xsd" xmlns:ns0="http://www.temenos.com/T24/event/Common/EventCommon" xmlns:ns1="http://www.temenos.com/T24/OutwardInterfaceService/PaymentHeader" xmlns:ns2="http://www.temenos.com/T24/OutwardInterfaceService/PorTransactionRTGS" xmlns:ns3="http://www.temenos.com/T24/OutwardInterfaceService/PorPartyCredit" xmlns:ns4="http://www.temenos.com/T24/OutwardInterfaceService/PorPartyDebit" xmlns:ns6="http://www.temenos.com/T24/OutwardInterfaceService/PorAdditionalInf" xmlns:ns7="http://www.temenos.com/T24/OutwardInterfaceService/PorAccountInfo" xmlns:ns12="http://www.temenos.com/T24/OutwardInterfaceService/PaymentFlowDets" xmlns:ns13="http://www.temenos.com/T24/OutwardInterfaceService/RegulatoryRepDetails">
+    <tns:eventCommon>
+        <ns0:application>PAYMENT.STPFLOW.HEAVY</ns0:application>
+        <ns0:companyId>GB0010001</ns0:companyId>
+        <ns0:operator>SEAT.USER</ns0:operator>
+        <ns0:today>2026-03-02</ns0:today>
+        <ns0:transactionStage>SERVICE-OPERATION</ns0:transactionStage>
+        <ns0:eventId>7ec817aa-7b80-4461-a680-888b25f4816d</ns0:eventId>
+        <ns0:creationTime>2026-07-27T20:43:58.625Z</ns0:creationTime>
+        <ns0:customCommon name="timeInLocal">2026-07-27T22:43:58.625 Europe/Warsaw</ns0:customCommon>
+    </tns:eventCommon>
+    <tns:ipaymentdetailsa>
+        <ns1:clearing>SWIFTMX</ns1:clearing>
+        <ns1:fileReference>SFD-BNK26061HMCFCGFL</ns1:fileReference>
+        <ns1:bulkReference>SBD-BNK26061HMCFCGFL</ns1:bulkReference>
+        <ns1:bulkCount>1</ns1:bulkCount>
+        <ns1:transactionCount>1</ns1:transactionCount>
+        <ns1:bulkAmount>100.00</ns1:bulkAmount>
+        <ns1:clearingTransactionType>CT</ns1:clearingTransactionType>
+        <ns1:originatingSource>POA</ns1:originatingSource>
+        <ns1:outMsgEmitFormat>XML</ns1:outMsgEmitFormat>
+        <ns1:gpiCorridor>N</ns1:gpiCorridor>
+        <ns1:rtgsSystem>N</ns1:rtgsSystem>
+        <ns1:deliveryHeaderID>D20260727912388183800</ns1:deliveryHeaderID>
+        <ns1:outputCarrier>CBPRPLUS</ns1:outputCarrier>
+        <ns1:appHeaderDetails>BAHCBPR$$urn:iso:std:iso:20022:tech:xsd:head.001.001.02$$BUSINESS$$2$$TransactionReference:SBD-BNK26061HMCFCGFL/ToAddress:CBVILT2XXXX/FromAddress:DEMOGBPXXXX/InstructionPriority:NORM$$MessageNameId:pacs.008.001.08/CreateDateTime:2026-07-27T22:43:58+02:00/SenderReference:260610L66075209/BusinessService:swift.cbprplus.02</ns1:appHeaderDetails>
+        <ns1:techHeaderDetails>XMLV2$$urn:swift:saa:xsd:saa.2.0$$TECHNICAL$$2.0.12$$TransactionReference:SBD-BNK26061HMCFCGFL/ToAddress:CBVILT2XXXX/FromAddress:DEMOGBPXXXX$$MessageNameId:pacs.008.001.08/SenderReference:260610L66075209/CreateDateTime:2026-07-27T22:43:58+02:00/RequestorName:ou=xxx,o=demogbpx,o=swift/ResponderName:ou=xxx,o=cbvilt2x,o=swift/Format:MX/ServiceName:swift.finplus/DLNRequested:false/DLNOverdueTime:/BusinessService:swift.cbprplus.02</ns1:techHeaderDetails>
+        <ns1:fileTransferIndicator>T</ns1:fileTransferIndicator>
+    </tns:ipaymentdetailsa>
+    <tns:iportransaction>
+        <ns2:fTNumber>BNK26061HMCFCGFL</ns2:fTNumber>
+        <ns2:companyBIC>DEMOGBPXXXX</ns2:companyBIC>
+        <ns2:createdDateTime>20260302224358324+02:00</ns2:createdDateTime>
+        <ns2:clearingChannel>SWIFTMX</ns2:clearingChannel>
+        <ns2:clearingTransactionType>CT</ns2:clearingTransactionType>
+        <ns2:sendersReferenceIncoming>PI260610VZTNZDK0</ns2:sendersReferenceIncoming>
+        <ns2:customerSpecifiedReference>MX0000000000399</ns2:customerSpecifiedReference>
+        <ns2:outTransactionAmount>100.00</ns2:outTransactionAmount>
+        <ns2:outTransactionCurrencyCode>USD</ns2:outTransactionCurrencyCode>
+        <ns2:debitValueDate>20260304</ns2:debitValueDate>
+        <ns2:paymentDirection>O</ns2:paymentDirection>
+        <ns2:singleMultipleIndicator>S</ns2:singleMultipleIndicator>
+        <ns2:messageUserReference>SFD-BNK26061HMCFCGFL</ns2:messageUserReference>
+        <ns2:transactionAmount>100.00</ns2:transactionAmount>
+        <ns2:transactionCurrencyCode>USD</ns2:transactionCurrencyCode>
+        <ns2:detailsOfCharges>SHA</ns2:detailsOfCharges>
+        <ns2:senderChargeAmount1>0</ns2:senderChargeAmount1>
+        <ns2:senderChargeCurrencyCode1>USD</ns2:senderChargeCurrencyCode1>
+        <ns2:outgoingMessageType>pacs.008</ns2:outgoingMessageType>
+        <ns2:creditValueDate>20260304</ns2:creditValueDate>
+        <ns2:incomingMsgType>SWIFTMXCT</ns2:incomingMsgType>
+        <ns2:instructedCurrencyCode>USD</ns2:instructedCurrencyCode>
+        <ns2:instructedAmount>100.00</ns2:instructedAmount>
+        <ns2:nationalId>DEMOGBPX</ns2:nationalId>
+        <ns2:creditMainAmount>100.00</ns2:creditMainAmount>
+        <ns2:bulkReference>SBD-BNK26061HMCFCGFL</ns2:bulkReference>
+        <ns2:bulkSendersReference>SBD-BNK26061HMCFCGFL</ns2:bulkSendersReference>
+        <ns2:originatingChannel>PayOrder</ns2:originatingChannel>
+        <ns2:priorityCode>N</ns2:priorityCode>
+        <ns2:endToEndReference>baa494be-81aa-4759-a469-b5aa4757eca8</ns2:endToEndReference>
+        <ns2:ctrBtrIndicator>C</ns2:ctrBtrIndicator>
+        <ns2:coverFlag>Y</ns2:coverFlag>
+        <ns2:isGPIEnabled>Y</ns2:isGPIEnabled>
+        <ns2:beneficiaryPartyResidency>LT</ns2:beneficiaryPartyResidency>
+        <ns2:filesendersreference>PI260610VZTNZDK0</ns2:filesendersreference>
+        <ns2:companyNationalId>987654321</ns2:companyNationalId>
+        <ns2:physicalFileName>SFD-BNK26061HMCFCGFL.xml</ns2:physicalFileName>
+        <ns2:messagePriority>1</ns2:messagePriority>
+        <ns2:requestedExecutionDate>20260302</ns2:requestedExecutionDate>
+        <ns2:debitMainAccount>156876</ns2:debitMainAccount>
+    </tns:iportransaction>
+    <tns:ipartycredit>
+        <ns3:crPtyRole>ACWINS</ns3:crPtyRole>
+        <ns3:crPtyRoleIndicator>R</ns3:crPtyRoleIndicator>
+        <ns3:crPtyIdentifierCode>CBVILT2XXXX</ns3:crPtyIdentifierCode>
+        <ns3:crPtyCountry>LT</ns3:crPtyCountry>
+        <ns3:crCountryCode>LT</ns3:crCountryCode>
+    </tns:ipartycredit>
+    <tns:ipartycredit>
+        <ns3:crPtyRole>BENFCY</ns3:crPtyRole>
+        <ns3:crPtyRoleIndicator>R</ns3:crPtyRoleIndicator>
+        <ns3:crPtyAccountLine>LT137044064000450875</ns3:crPtyAccountLine>
+        <ns3:crPtyFreeLine1>John Wayne</ns3:crPtyFreeLine1>
+        <ns3:crPtyName>John Wayne</ns3:crPtyName>
+        <ns3:crPtyIban>LT137044064000450875</ns3:crPtyIban>
+        <ns3:crPtyAccountNumber>LT137044064000450875</ns3:crPtyAccountNumber>
+    </tns:ipartycredit>
+    <tns:ipartycredit>
+        <ns3:crPtyRole>RECVER</ns3:crPtyRole>
+        <ns3:crPtyRoleIndicator>G</ns3:crPtyRoleIndicator>
+        <ns3:crPtyIdentifierCode>CBVILT2XXXX</ns3:crPtyIdentifierCode>
+        <ns3:directPaymentFlag>Y</ns3:directPaymentFlag>
+        <ns3:crPtyCountry>LT</ns3:crPtyCountry>
+    </tns:ipartycredit>
+    <tns:ipartycredit>
+        <ns3:crPtyRole>SNDCBK</ns3:crPtyRole>
+        <ns3:crPtyRoleIndicator>G</ns3:crPtyRoleIndicator>
+        <ns3:crPtyIdentifierCode>CITIUS33</ns3:crPtyIdentifierCode>
+        <ns3:crPtyAccountLine>36461976</ns3:crPtyAccountLine>
+        <ns3:crPtyAccountNumber>36461976</ns3:crPtyAccountNumber>
+    </tns:ipartycredit>
+    <tns:ipartydebit>
+        <ns4:dbPtyRole>ORDPTY</ns4:dbPtyRole>
+        <ns4:dbPtyRoleIndicator>R</ns4:dbPtyRoleIndicator>
+        <ns4:dbPtyAccountLine>GB56DEMO60161300156876</ns4:dbPtyAccountLine>
+        <ns4:dbPtyFreeLine1>Oliver Diesel Oliver Diesel James</ns4:dbPtyFreeLine1>
+        <ns4:dbPtyFreeLine2>133 Cornerstone Street</ns4:dbPtyFreeLine2>
+        <ns4:dbPtyFreeLine3>U.K.</ns4:dbPtyFreeLine3>
+        <ns4:dbPtyFreeLine4>U.K.</ns4:dbPtyFreeLine4>
+        <ns4:dbPtyName>Oliver Diesel Oliver Diesel James</ns4:dbPtyName>
+        <ns4:dbPtyCountry>EU</ns4:dbPtyCountry>
+        <ns4:dbPtyAddressLine1>133 Cornerstone Street</ns4:dbPtyAddressLine1>
+        <ns4:dbPtyAddressLine2>U.K.</ns4:dbPtyAddressLine2>
+        <ns4:dbPtyAddrStreetName>133 Cornerstone Street</ns4:dbPtyAddrStreetName>
+        <ns4:dbPtyAddrTownName>U.K.</ns4:dbPtyAddrTownName>
+        <ns4:dbPtyAddressLine3>U.K.</ns4:dbPtyAddressLine3>
+        <ns4:dbPtyIban>GB56DEMO60161300156876</ns4:dbPtyIban>
+    </tns:ipartydebit>
+    <tns:ipartydebit>
+        <ns4:dbPtyRole>ASVINS</ns4:dbPtyRole>
+        <ns4:dbPtyRoleIndicator>R</ns4:dbPtyRoleIndicator>
+        <ns4:dbPtyIdentifierCode>DEMOGBPX</ns4:dbPtyIdentifierCode>
+        <ns4:dbPtyFreeLine1>Model Bank</ns4:dbPtyFreeLine1>
+        <ns4:dbPtyName>Model Bank</ns4:dbPtyName>
+    </tns:ipartydebit>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>UTCTimeOfReceipt</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>1</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>202607272043440230</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>ParentAccountNo</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>2</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>GB78DEMO60161300156868</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>ParentAccPartyIndicator</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>3</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>D</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>Created Company</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>4</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>GB0010001</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>CORE.DebtorAddress</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>5</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>CustomerPostalCode</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iadditionalinf>
+        <ns6:additionalInformationCode>Identity.Name.Comparison</ns6:additionalInformationCode>
+        <ns6:additionalInfTypeLineSequence>6</ns6:additionalInfTypeLineSequence>
+        <ns6:additionalInfLine>Yes</ns6:additionalInfLine>
+    </tns:iadditionalinf>
+    <tns:iaccountinfo>
+        <ns7:accountCompanyID>BNK</ns7:accountCompanyID>
+        <ns7:accountNumber>156876</ns7:accountNumber>
+        <ns7:accountCurrency>USD</ns7:accountCurrency>
+        <ns7:accountType>C</ns7:accountType>
+        <ns7:accountStatus>Active</ns7:accountStatus>
+        <ns7:customerID>190294</ns7:customerID>
+        <ns7:customerName>Oliver Diesel Oliver Diesel James</ns7:customerName>
+        <ns7:customerAddress>133 Cornerstone Street</ns7:customerAddress>
+        <ns7:customerPostalCode>U.K.</ns7:customerPostalCode>
+        <ns7:customerCountryCode>U.K.</ns7:customerCountryCode>
+        <ns7:customerResidency>EU</ns7:customerResidency>
+        <ns7:customerLanguage>1</ns7:customerLanguage>
+        <ns7:businessLine>1</ns7:businessLine>
+        <ns7:sectorCode>1001</ns7:sectorCode>
+        <ns7:accountOfficer>1</ns7:accountOfficer>
+        <ns7:mainOrChargeAccType>D</ns7:mainOrChargeAccType>
+        <ns7:categoryCode>1001</ns7:categoryCode>
+        <ns7:accountValidationDate>20260302</ns7:accountValidationDate>
+        <ns7:accInfStreetName>133 Cornerstone Street</ns7:accInfStreetName>
+        <ns7:accInfTownName>U.K.</ns7:accInfTownName>
+        <ns7:accInfCountry>EU</ns7:accInfCountry>
+    </tns:iaccountinfo>
+    <tns:iaccountinfo>
+        <ns7:accountCompanyID>BNK</ns7:accountCompanyID>
+        <ns7:accountNumber>158135</ns7:accountNumber>
+        <ns7:accountCurrency>USD</ns7:accountCurrency>
+        <ns7:accountType>N</ns7:accountType>
+        <ns7:accountStatus>Active</ns7:accountStatus>
+        <ns7:customerID>100492</ns7:customerID>
+        <ns7:customerName>Citi Group Inc. (New York</ns7:customerName>
+        <ns7:customerAddress>399 Park Ave</ns7:customerAddress>
+        <ns7:customerPostalCode>New York</ns7:customerPostalCode>
+        <ns7:customerResidency>US</ns7:customerResidency>
+        <ns7:customerLanguage>1</ns7:customerLanguage>
+        <ns7:businessLine>999</ns7:businessLine>
+        <ns7:sectorCode>3001</ns7:sectorCode>
+        <ns7:accountOfficer>6</ns7:accountOfficer>
+        <ns7:relatedIBAN>LT367189900000072086</ns7:relatedIBAN>
+        <ns7:mainOrChargeAccType>C</ns7:mainOrChargeAccType>
+        <ns7:identifierCode>CITIUS33</ns7:identifierCode>
+        <ns7:categoryCode>5001</ns7:categoryCode>
+        <ns7:accountValidationDate>20260302</ns7:accountValidationDate>
+        <ns7:accInfStreetName>399 Park Ave</ns7:accInfStreetName>
+        <ns7:accInfTownName>New York</ns7:accInfTownName>
+        <ns7:accInfCountry>US</ns7:accInfCountry>
+    </tns:iaccountinfo>
+    <tns:ipaymentflowdets>
+        <ns12:instConfStatus>ACCP</ns12:instConfStatus>
+        <ns12:localRefName>UTCTimeOfReceipt</ns12:localRefName>
+        <ns12:localRefName>ParentAccountNo</ns12:localRefName>
+        <ns12:localRefName>ParentAccPartyIndicator</ns12:localRefName>
+        <ns12:localRefName>Created Company</ns12:localRefName>
+        <ns12:localRefName>CORE.DebtorAddress</ns12:localRefName>
+        <ns12:localRefName>Identity.Name.Comparison</ns12:localRefName>
+        <ns12:localRefValue>202607272043440230</ns12:localRefValue>
+        <ns12:localRefValue>GB78DEMO60161300156868</ns12:localRefValue>
+        <ns12:localRefValue>D</ns12:localRefValue>
+        <ns12:localRefValue>GB0010001</ns12:localRefValue>
+        <ns12:localRefValue>CustomerPostalCode</ns12:localRefValue>
+        <ns12:localRefValue>Yes</ns12:localRefValue>
+    </tns:ipaymentflowdets>
+    <tns:iregulatoryrepdets>
+        <ns13:regDebtorCreditorRpt>NOTPROVIDED</ns13:regDebtorCreditorRpt>
+        <ns13:regPosition>1</ns13:regPosition>
+    </tns:iregulatoryrepdets>
+</tns:doOutwardSWIFTMXMapping>

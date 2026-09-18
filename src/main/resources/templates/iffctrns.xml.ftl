@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08 pacs.008.001.08.xsd">
+   <FIToFICstmrCdtTrf>
+      <GrpHdr>
+         <MsgId>${template.msgId}</MsgId>
+         <CreDtTm>${template.timestamp}</CreDtTm>
+         <NbOfTxs>1</NbOfTxs>
+         <TtlIntrBkSttlmAmt Ccy="EUR">11.99</TtlIntrBkSttlmAmt>
+         <IntrBkSttlmDt>2026-07-20</IntrBkSttlmDt>
+         <SttlmInf>
+            <SttlmMtd>CLRG</SttlmMtd>
+         </SttlmInf>
+         <PmtTpInf>
+            <SvcLvl>
+               <Cd>SEPA</Cd>
+            </SvcLvl>
+            <LclInstrm>
+               <Cd>INST</Cd>
+            </LclInstrm>
+         </PmtTpInf>
+         <InstgAgt>
+            <FinInstnId>
+               <BICFI>CBSBLT26XXX</BICFI>
+            </FinInstnId>
+         </InstgAgt>
+         <InstdAgt>
+            <FinInstnId>
+               <BICFI>ABNANL2AXXX</BICFI>
+            </FinInstnId>
+         </InstdAgt>
+      </GrpHdr>
+      <CdtTrfTxInf>
+         <PmtId>
+            <InstrId>PI241370JVGKQ8GR</InstrId>
+            <EndToEndId>E2E-TIPS-0001</EndToEndId>
+            <TxId>${template.txId}</TxId>
+         </PmtId>
+         <IntrBkSttlmAmt Ccy="EUR">11.99</IntrBkSttlmAmt>
+         <AccptncDtTm>${template.timestamp}</AccptncDtTm>
+         <ChrgBr>SLEV</ChrgBr>
+         <Dbtr>
+            <Nm>Nike</Nm>
+            <PstlAdr>
+               <TwnNm>VILNIUS</TwnNm>
+               <Ctry>LT</Ctry>
+            </PstlAdr>
+         </Dbtr>
+         <DbtrAcct>
+            <Id>
+               <IBAN>GB38DEMO60161300011215</IBAN>
+            </Id>
+         </DbtrAcct>
+         <DbtrAgt>
+            <FinInstnId>
+               <BICFI>CBSBLT26XXX</BICFI>
+            </FinInstnId>
+         </DbtrAgt>
+         <CdtrAgt>
+            <FinInstnId>
+               <BICFI>ABNANL2AXXX</BICFI>
+            </FinInstnId>
+         </CdtrAgt>
+         <Cdtr>
+            <Nm>Beneficiary Name</Nm>
+            <PstlAdr>
+               <AdrLine>Ben Address</AdrLine>
+            </PstlAdr>
+         </Cdtr>
+         <CdtrAcct>
+            <Id>
+               <IBAN>NL30ABNA0457267429</IBAN>
+            </Id>
+         </CdtrAcct>
+         <RmtInf>
+            <Ustrd>Test Payment 0001</Ustrd>
+         </RmtInf>
+      </CdtTrfTxInf>
+   </FIToFICstmrCdtTrf>
+</Document>

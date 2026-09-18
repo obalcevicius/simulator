@@ -12,4 +12,6 @@ jms:
     destination: testQueue
 simulator:
   uriBase: http://localhost:5000
+  minDelay: 100
+  maxDelay: 200
 

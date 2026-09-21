@@ -2,70 +2,50 @@ package com.ole.simulator.generator;
 
 import java.time.Instant;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.random.RandomGenerator;
 
 public class DataGenerator {
-    private static final String CHARS = "BCDFGHJKLMNPQRSTVWXYZ";
+    private static final String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    private static final String ID_PREFIX = "OB";
 
     public DataGenerator() {
         RandomGenerator random = RandomGenerator.getDefault();
-        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyMMdd").withZone(ZoneId.systemDefault());
-        DateTimeFormatter formatterTimeStamp = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss").withZone(ZoneId.systemDefault());
+        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyyMMdd").withZone(ZoneId.systemDefault());
+        DateTimeFormatter formatterTimeStamp = DateTimeFormatter.ISO_LOCAL_DATE_TIME.withZone(ZoneId.systemDefault());
+        DateTimeFormatter formatterTimeStampFull = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.systemDefault());
 
-
-
-        String rand = random.ints(9, 0, CHARS.length())
+        String rand = random.ints(8, 0, CHARS.length())
                 .mapToObj(CHARS::charAt)
                 .collect(StringBuilder::new,
                         StringBuilder::append,
                         StringBuilder::append)
                 .toString();
 
-        Instant instant = Instant.now().truncatedTo(ChronoUnit.MILLIS);
-        timestamp = instant.toString();
-        date = formatterTimeStamp.format(instant);
-        msgId = "O"+formatterDate.format(instant)+rand;
-
-        txId = msgId;
+        var instant = ZonedDateTime.now();
+        timestamp = formatterTimeStampFull.format(instant);
+        time = formatterTimeStamp.format(instant.truncatedTo(ChronoUnit.SECONDS));
+        msgId = ID_PREFIX+formatterDate.format(instant)+rand;
     }
 
-    private String msgId;
-    private String timestamp;
-    private String date;
-    private String txId;
+    private final String msgId;
+    private final String timestamp;
+    private final String time;
 
 
     public String getMsgId() {
         return msgId;
     }
 
-    public void setMsgId(String msgId) {
-        this.msgId = msgId;
-    }
-
     public String getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
+    public String getTime() {
+        return time;
     }
 
-    public String getDate() {
-        return date;
-    }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getTxId() {
-        return txId;
-    }
-
-    public void setTxId(String txId) {
-        this.txId = txId;
-    }
 }

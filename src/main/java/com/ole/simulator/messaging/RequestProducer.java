@@ -1,27 +1,22 @@
 package com.ole.simulator.messaging;
 
-import com.ole.simulator.controller.CentrolinkController;
+import com.ole.simulator.data.MessageData;
 import com.ole.simulator.generator.IFPSRPRTGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.xml.sax.InputSource;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.xpath.XPath;
-import javax.xml.xpath.XPathConstants;
-import javax.xml.xpath.XPathFactory;
-import java.io.StringReader;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 
 
 @Service
 public class RequestProducer {
+    final Logger logger = LoggerFactory.getLogger(RequestProducer.class);
 
     @Value("${simulator.uriBase}")
     private String uriBase;
@@ -34,11 +29,17 @@ public class RequestProducer {
         this.messageGenerator = messageGenerator;
     }
 
-    public void send(Document payload) throws Exception {
+    public void send(MessageData request) throws Exception {
 
+
+        MessageData message = messageGenerator.generate(request);
+
+        logger.info("Request {} sent", message.documentId());
 
         ResponseEntity<String> response =  restClient.post()
-                                                     .uri(uriBase +"/api/v1/centrolink-sepa-payment-service/sepaInstantInboundMessage").body(messageGenerator.generate(payload))
+                                                     .uri(uriBase +"/api/v1/centrolink-sepa-payment-service/sepaInstantInboundMessage")
+                                                     .contentType(MediaType.APPLICATION_XML)
+                                                     .body(message.payload())
                                                      .retrieve().toEntity(String.class);
     }
 }

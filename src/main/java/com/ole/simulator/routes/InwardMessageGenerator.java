@@ -14,11 +14,8 @@ public class InwardMessageGenerator  extends RouteBuilder {
 
     @Value("${simulator.maxDelay}")
     private String maxDelay;
-    private final RequestProducer requestProducer;
 
-    public InwardMessageGenerator(RequestProducer requestProducer) {
-        this.requestProducer = requestProducer;
-    }
+    public InwardMessageGenerator(RequestProducer requestProducer) {   }
 
     @Override
     public void configure() {

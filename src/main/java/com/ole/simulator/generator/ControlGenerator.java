@@ -1,5 +1,6 @@
 package com.ole.simulator.generator;
 
+import com.ole.simulator.data.MessageData;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class ControlGenerator {
 
 
 
-    public String generate(String msgId) throws Exception {
+    public MessageData generate(MessageData request) throws Exception {
 
         Template template =
                 configuration.getTemplate("contrl.xml.ftl");
@@ -28,14 +29,14 @@ public class ControlGenerator {
 
         Map<String, Object> model = new HashMap<>();
         model.put("msgId", data.getMsgId());
-        model.put("time",data.getDate());
-        model.put("origId", msgId);
+        model.put("time",data.getTime());
+        model.put("origId", request.documentId());
 
 
         StringWriter writer = new StringWriter();
         template.process(model, writer);
 
-        return writer.toString();
+        return new MessageData(data.getMsgId(), writer.toString());
     }
 
 

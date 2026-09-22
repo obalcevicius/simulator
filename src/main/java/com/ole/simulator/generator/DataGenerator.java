@@ -13,7 +13,7 @@ public class DataGenerator {
 
     public DataGenerator() {
         RandomGenerator random = RandomGenerator.getDefault();
-        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyyyMMdd").withZone(ZoneId.systemDefault());
+        DateTimeFormatter formatterDate = DateTimeFormatter.ofPattern("yyMMdd").withZone(ZoneId.systemDefault());
         DateTimeFormatter formatterTimeStamp = DateTimeFormatter.ISO_LOCAL_DATE_TIME.withZone(ZoneId.systemDefault());
         DateTimeFormatter formatterTimeStampFull = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.systemDefault());
 

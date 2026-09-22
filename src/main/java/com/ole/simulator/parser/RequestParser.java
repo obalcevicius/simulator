@@ -6,9 +6,11 @@ import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 import java.io.InputStream;
+import java.time.Instant;
 
 public class RequestParser {
 
@@ -19,13 +21,14 @@ public class RequestParser {
     private final static String E2E_REFERENCE = "EndToEndId";
     private final static String ORIGINAL_E2E_REFERENCE = "OrgnlEndToEndId";
     private final static String MESSAGE_TYPE = "Msg";
+    private final static String DEBTOR_AGENT = "DbtrAgt";
+    private final static String BICFI = "BICFI";
     private final static String ACCEPTANCE_DATETIME = "AccptncDtTm";
 
 
     public static MessageData parseRequestMessage(InputStream message) throws XMLStreamException {
         XMLInputFactory factory = XMLInputFactory.newFactory();
         XMLEventReader reader = factory.createXMLEventReader(message);
-
 
         while (reader.hasNext()) {
             XMLEvent nextEvent = reader.nextEvent();
@@ -53,6 +56,9 @@ public class RequestParser {
         String e2eReference = "";
         String messageType = "";
         String initTimestamp = "";
+        String debtorAgent = "";
+        boolean isCurrentDebtorAgent = false;
+
         while (reader.hasNext()) {
             XMLEvent nextEvent = reader.nextEvent();
 
@@ -76,14 +82,31 @@ public class RequestParser {
                         nextEvent = reader.nextEvent();
                         e2eReference = nextEvent.asCharacters().getData();
                         break;
+                    case DEBTOR_AGENT:
+                        nextEvent = reader.nextEvent();
+                        isCurrentDebtorAgent = true;
+                        break;
+                    case BICFI:
+                        nextEvent = reader.nextEvent();
+                        if(isCurrentDebtorAgent)
+                            debtorAgent = nextEvent.asCharacters().getData();
+                        break;
                     case ACCEPTANCE_DATETIME:
                         nextEvent = reader.nextEvent();
                         initTimestamp = nextEvent.asCharacters().getData();
                         break;
                 }
             }
+            else if(nextEvent.isEndElement()) {
+                EndElement endElement = nextEvent.asEndElement();
+                switch(endElement.getName().getLocalPart()) {
+                    case DEBTOR_AGENT:
+                        isCurrentDebtorAgent = false;
+                        break;
+                }
+            }
         }
-        return new MessageData(documentId, messageId, transactionId, e2eReference, messageType, initTimestamp, null);
+        return new MessageData(documentId, messageId, transactionId, e2eReference, messageType, initTimestamp, debtorAgent, null, Instant.now().toEpochMilli());
 
     }
 
@@ -94,6 +117,9 @@ public class RequestParser {
         String e2eReference = "";
         String messageType = "";
         String initTimestamp = "";
+        String debtorAgent ="";
+        boolean isCurrentDebtorAgent = false;
+
         while (reader.hasNext()) {
             XMLEvent nextEvent = reader.nextEvent();
 
@@ -117,6 +143,15 @@ public class RequestParser {
                         nextEvent = reader.nextEvent();
                         e2eReference = nextEvent.asCharacters().getData();
                         break;
+                    case DEBTOR_AGENT:
+                        nextEvent = reader.nextEvent();
+                        isCurrentDebtorAgent = true;
+                        break;
+                    case BICFI:
+                        nextEvent = reader.nextEvent();
+                        if(isCurrentDebtorAgent)
+                            debtorAgent = nextEvent.asCharacters().getData();
+                        break;
                     case ACCEPTANCE_DATETIME:
                         nextEvent = reader.nextEvent();
                         initTimestamp = nextEvent.asCharacters().getData();
@@ -124,7 +159,7 @@ public class RequestParser {
                 }
             }
         }
-        return new MessageData(documentId, messageId, transactionId, e2eReference, messageType, initTimestamp, null);
+        return new MessageData(documentId, messageId, transactionId, e2eReference, messageType, initTimestamp, debtorAgent, null, Instant.now().toEpochMilli());
     }
 
 }

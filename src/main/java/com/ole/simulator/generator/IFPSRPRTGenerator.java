@@ -30,6 +30,7 @@ public class IFPSRPRTGenerator {
         model.put("origTxnId", request.transactionId());
         model.put("origE2EID",request.e2eReference());
         model.put("accpTime",request.initTimestamp());
+        model.put("debtorAgent", request.debtorAgent());
         model.put("origMsgId",request.messageId());
 
         StringWriter writer = new StringWriter();

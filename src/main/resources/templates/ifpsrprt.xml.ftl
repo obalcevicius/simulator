@@ -59,7 +59,7 @@
                                     </PmtTpInf>
                                     <DbtrAgt>
                                         <FinInstnId>
-                                            <BICFI>CBSBLT26XXX</BICFI>
+                                            <BICFI>${debtorAgent}</BICFI>
                                         </FinInstnId>
                                     </DbtrAgt>
                                 </OrgnlTxRef>

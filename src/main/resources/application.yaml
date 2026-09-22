@@ -1,5 +1,7 @@
 simulator:
   uriBase: http://localhost:5000
+  concurrentConsumers: 100
+  sedaMaxDepth: 2147483647
   minDelay: 1000
   maxDelay: 2000
 

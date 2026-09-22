@@ -11,10 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-
-import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
+import java.time.Instant;
+import java.util.Map;
 
 @RestController
 public class CentrolinkController {
@@ -31,11 +29,11 @@ public class CentrolinkController {
     @PostMapping("/api/v1/request")
     public ResponseEntity<String> postMessage(HttpServletRequest request) throws Exception {
         String requestId = request.getHeader("X-Request-Id");
-        logger.info("Request {} received", requestId);
+
+        logger.info("Received {}", requestId);
 
         MessageData requestData = RequestParser.parseRequestMessage(request.getInputStream());
-
-        producerTemplate.withBody(requestData).to("seda:a").send();
+        producerTemplate.withExchangeProperties(Map.ofEntries(Map.entry("initialTimestamp", Instant.now().toEpochMilli()))).withBody(requestData).to("seda:a").send();
         return ResponseEntity.ok().header("content-type","text/xml").body(controlGenerator.generate(requestData).payload());
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -34,7 +35,7 @@ public class RequestProducer {
 
         MessageData message = messageGenerator.generate(request);
 
-        logger.info("Request {} sent", message.documentId());
+        logger.info("Sent {}, originalID {}, elapsedTime {}", message.documentId(), request.documentId(), ChronoUnit.MILLIS.between(Instant.ofEpochMilli(request.internalTimestamp()), Instant.now()));
 
         ResponseEntity<String> response =  restClient.post()
                                                      .uri(uriBase +"/api/v1/centrolink-sepa-payment-service/sepaInstantInboundMessage")

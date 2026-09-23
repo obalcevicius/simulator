@@ -33,7 +33,7 @@ public class CentrolinkController {
         logger.info("Received {}", requestId);
 
         MessageData requestData = RequestParser.parseRequestMessage(request.getInputStream());
-        producerTemplate.withExchangeProperties(Map.ofEntries(Map.entry("initialTimestamp", Instant.now().toEpochMilli()))).withBody(requestData).to("seda:a").send();
+        producerTemplate.withExchangeProperties(Map.ofEntries(Map.entry("internalTimestamp", requestData.internalTimestamp()), Map.entry("documentID",requestData.documentId()))).withBody(requestData).to("seda:a").send();
         return ResponseEntity.ok().header("content-type","text/xml").body(controlGenerator.generate(requestData).payload());
     }
 }

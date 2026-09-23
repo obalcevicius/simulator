@@ -31,16 +31,18 @@ public class RequestProducer {
     }
 
     public void send(MessageData request) throws Exception {
-
+        logger.debug("T3: {} {} ", request.documentId(), Instant.now().toEpochMilli()-request.internalTimestamp());
 
         MessageData message = messageGenerator.generate(request);
 
         logger.info("Sent {}, originalID {}, elapsedTime {}", message.documentId(), request.documentId(), ChronoUnit.MILLIS.between(Instant.ofEpochMilli(request.internalTimestamp()), Instant.now()));
+        logger.debug("T4: {} {} ", request.documentId(), Instant.now().toEpochMilli() - request.internalTimestamp());
 
         ResponseEntity<String> response =  restClient.post()
                                                      .uri(uriBase +"/api/v1/centrolink-sepa-payment-service/sepaInstantInboundMessage")
                                                      .contentType(MediaType.APPLICATION_XML)
                                                      .body(message.payload())
                                                      .retrieve().toEntity(String.class);
+        logger.debug("T5: {} {}", request.documentId(), Instant.now().toEpochMilli() - request.internalTimestamp());
     }
 }

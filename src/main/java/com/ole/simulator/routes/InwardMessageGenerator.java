@@ -38,9 +38,13 @@ public class InwardMessageGenerator  extends RouteBuilder {
         from("seda:a?concurrentConsumers="+concurrentConsumers+"&size="+sedaMaxDepth)
                 .routeId("inward-route")
                 .process(exchange -> {
-                    if (0 == ChronoUnit.SECONDS.between(Instant.ofEpochMilli(exchange.getProperty("initialTimestamp",Long.class)), Instant.now())) {
+                    Long internalTimestamp = exchange.getProperty("internalTimestamp",Long.class);
+                    String documentId = exchange.getProperty("documentID", String.class);
+                    logger.debug("T1: {} {} ", documentId, Instant.now().toEpochMilli()-internalTimestamp);
+                    if (0 == ChronoUnit.SECONDS.between(Instant.ofEpochMilli(internalTimestamp), Instant.now())) {
                         Thread.sleep(minDelay + (long) (Math.random() * 1000));
                     }
+                    logger.debug("T2: {} {} ", documentId, Instant.now().toEpochMilli()-internalTimestamp);
                 })
                 .bean(RequestProducer.class, "send(${body})");
     }

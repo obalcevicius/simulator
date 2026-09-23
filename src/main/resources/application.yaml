@@ -5,3 +5,13 @@ simulator:
   minDelay: 1000
   maxDelay: 2000
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: loggers
+  endpoint:
+    loggers:
+      enabled: true
+
+

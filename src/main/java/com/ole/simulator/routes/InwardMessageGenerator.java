@@ -42,6 +42,7 @@ public class InwardMessageGenerator  extends RouteBuilder {
                     String documentId = exchange.getProperty("documentID", String.class);
                     logger.debug("T1: {} {} ", documentId, Instant.now().toEpochMilli()-internalTimestamp);
                     if (0 == ChronoUnit.SECONDS.between(Instant.ofEpochMilli(internalTimestamp), Instant.now())) {
+                        logger.debug("SLEEP {}", documentId);
                         Thread.sleep(minDelay + (long) (Math.random() * 1000));
                     }
                     logger.debug("T2: {} {} ", documentId, Instant.now().toEpochMilli()-internalTimestamp);
